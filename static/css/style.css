@@ -333,8 +333,10 @@ section#contato h3 {
   font-size: 2rem;
 }
 
+/* Loader de carregamento */
+
 section#contato div#carregamento{
-  display: none;
+  display: none; /* Deixa o display none para não aparecer até que você clique no botão enviar (ver JS) */
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 3rem;
@@ -356,18 +358,21 @@ section#contato div#carregamento div#loader{
   border-bottom: 13px solid #0066ff;
   width: 80px;
   height: 80px;
+  /* Anima o elemento div#loader criando a variável spin, em 2s de forma linear e infinita */
   animation: spin 2s linear infinite;
 }
 
-
+/* Anima a variável spin do animation */
 @keyframes spin {
-  0% { 
-    transform: rotate(0deg); 
-  }
-  100% { 
-    transform: rotate(360deg); 
+  0% {  /* Começa em 0% */
+    transform: rotate(0deg); /* Rotação do elemento no 0° */ 
+  } 
+  100% { /* Vai até 100% */
+    transform: rotate(360deg); /* Rotação do elemento em 360° */ 
   }
 }
+
+/* Loader de carregamento */
 
 footer p {
   min-height: 4rem;

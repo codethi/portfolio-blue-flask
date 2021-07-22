@@ -1,68 +1,95 @@
-let nome = document.querySelector('#nome')
-let email = document.querySelector('#email')
-let mensagem = document.querySelector('#mensagem')
-let btnEnviar = document.getElementById("enviar")
-let nomeOk = false
-let emailOk = false
-let msgOk = false
-btnEnviar.disabled = true
+let inputNome = document.querySelector('#nome') /* Cria a variável inputNome e coloca nela o elemento que possui o id nome */
+let inputEmail = document.querySelector('#email') /* Cria a variável inputEmail e coloca nela o elemento que possui o id email */
+let textareaMensagem = document.querySelector('#mensagem') /* Cria a variável textareaMensagem e coloca nela o elemento que possui o id mensagem */
+let btnEnviar = document.querySelector('#enviar') /* Cria a variável btnEnviar e coloca nela o elemento que possui o id enviar */
+let nomeOk = false /* variável de controle para o botão */
+let emailOk = false /* variável de controle para o botão */
+let msgOk = false /* variável de controle para o botão */
+btnEnviar.disabled = true /* Desabilita o botão assim que inicia a página html */
+ 
+/* Só posso utilziar a arrow function (=>) quando a função não tiver nome */
 
-nome.addEventListener('keyup', () => {
-   if (nome.value.length < 3) {
-      nome.style.borderColor = 'red'
+/* Adiciona um evento de keyup no inputNome e realiza a função */
+inputNome.addEventListener('keydown', () => { 
+   /* Verifica se o tamanho do valor do inputNome é menor que 2 */
+   if(inputNome.value.length < 2){
+      inputNome.style.borderColor = 'red' /* Troca a cor da borda do input para red */
       nomeOk = false
    } else {
-      nome.style.borderColor = 'green'
+      inputNome.style.borderColor = 'green' /* Troca a cor da borda do input para green */
       nomeOk = true
    }
 
+   if(inputNome.value == '' || inputNome.value == undefined || inputNome.value == null) {
+      inputNome.style.borderColor = '#ccc'
+   }
+
+   /* Se todas as variáveis forem true habilita o botão */
    if (nomeOk && emailOk && msgOk) {
       btnEnviar.disabled = false
-   } else {
+   } else { /* se não, desabilita */
       btnEnviar.disabled = true
    }
+
 })
 
-email.addEventListener('keyup', () => {
-   if (email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1) {
-      email.style.borderColor = 'red'
+
+/* Adiciona um evento de keyup no inputEmail e realiza a função */
+inputEmail.addEventListener('keyup', () => {
+   /* 
+   O indexOf procura um caractere no valor do inputEmail, se esse valor não existir ele retorna -1. 
+   Então essa expressão inputEmail.value.indexOf('@') == -1 é a mesmo coisa que:
+   Se no valor de inputEmail não existir @, faça...
+
+   || é o operador OU em JavaScript
+   && é o operador E em JavaScript
+   */
+   if(inputEmail.value.indexOf('@') == -1 || inputEmail.value.indexOf('.') == -1){
+      inputEmail.style.borderColor = 'red' /* Troca a cor da borda do input para red */
       emailOk = false
    } else {
-      email.style.borderColor = 'green'
+      inputEmail.style.borderColor = 'green' /* Troca a cor da borda do input para green */
       emailOk = true
-   }
+   }  
 
+   /* Se todas as variáveis forem true habilita o botão */
    if (nomeOk && emailOk && msgOk) {
       btnEnviar.disabled = false
-   } else {
+   } else { /* se não, desabilita */
       btnEnviar.disabled = true
    }
 })
 
-mensagem.addEventListener('keyup', () => {
-   if (mensagem.value.length > 500) {
-      mensagem.style.borderColor = 'red'
+/* Adiciona um evento de keyup no textareaMensagem e realiza a função */
+textareaMensagem.addEventListener('keyup', ()=>{
+   /* Verifica se o tamanho do valor do textareaMensagem é maior que 100  */
+   if(textareaMensagem.value.length > 100){
+      textareaMensagem.style.borderColor = 'red' /* Troca a cor da borda do input para red */
       msgOk = false
    } else {
-      mensagem.style.borderColor = 'green'
+      textareaMensagem.style.borderColor = 'green' /* Troca a cor da borda do input para green */
       msgOk = true
    }
 
+   /* Se todas as variáveis forem true habilita o botão */
    if (nomeOk && emailOk && msgOk) {
       btnEnviar.disabled = false
-   } else {
+   } else { /* se não, desabilita */
       btnEnviar.disabled = true
    }
 })
 
 
 btnEnviar.addEventListener('click', () => {
-   /* Mostra a div de carregamento */
+   /* Pega a div de carregamento */
    let carregamento = document.querySelector('#carregamento')
+   /* Mostra a div de carregamento, adicionando o 'flex' ao display */
    carregamento.style.display = 'flex'
 
-   /* Esconde o Form */
+   /* Pega o Form */
    let form = document.querySelector('form')
+   /* Esconde o Form, mudando o display pra 'none' */
    form.style.display = 'none'
 })
+
 
