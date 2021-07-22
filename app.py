@@ -20,8 +20,8 @@ mail_settings = {
     "MAIL_PORT": 465,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": '',
-    "MAIL_PASSWORD": ''
+    "MAIL_USERNAME": 'seu_email',
+    "MAIL_PASSWORD": 'sua_senha'
 }
 
 app.config.update(mail_settings) #atualizar as configurações do app com o dicionário mail_settings
